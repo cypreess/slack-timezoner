@@ -50,7 +50,7 @@ def process(text, timzeone, timezones):
             local = time.astimezone(pytz.timezone(timezone))
             sub_result.append((timezone, local.strftime(format)))
 
-        result.append(('%s:%s%s' % (h, m, am_pm), sub_result))
+        result.append(('%s:%02d%s' % (h, m, am_pm), sub_result))
     return result
 
 
@@ -67,7 +67,7 @@ def convert():
         abort(403)
 
     if request.form.get('bot_id'):
-        return
+        return ''
 
     user = request.form.get('user_name')
     user_timezone = user_timezones[user]
