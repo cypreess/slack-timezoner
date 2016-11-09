@@ -61,7 +61,7 @@ def home():
 
 @app.route('/', methods=['POST'])
 def convert():
-    if request.form.get('token') != settings.TOKEN:
+    if settings.TOKEN is not None and request.form.get('token') != settings.TOKEN:
         print(request.form)
         print("BAD TOKEN")
         abort(403)
